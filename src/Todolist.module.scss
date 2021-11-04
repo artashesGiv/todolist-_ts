@@ -1,0 +1,39 @@
+$mainColor: rgb(118, 118, 118);
+
+.todolist {
+   box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+   border-radius: 8px;
+   padding: 20px;
+
+   .button {
+      margin-left: 10px;
+   }
+
+   .error {
+      border: 3px solid crimson;
+      outline: none;
+   }
+}
+
+.listEl, .sortButton {
+   display: flex;
+   justify-content: space-between;
+}
+
+.list {
+   padding: 0;
+   margin: 10px 0;
+
+   li {
+      margin: 10px 0;
+   }
+
+   .isDone {
+      opacity: 0.5;
+   }
+}
+
+.activeFilter {
+   background-color: $mainColor;
+   color: #fff
+}

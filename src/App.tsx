@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './App.css'
+import './App.scss'
 import Todolist from './Todolist'
 import {v1} from 'uuid'
 
@@ -22,11 +22,11 @@ function App() {
       ]
    )
    const [filter, setFilter] = useState<FilterValuesType>('all')
-
-   const removeTask = (taskID: string) => setTasks(tasks.filter(t => t.id !== taskID))
-
+   // изменение филтра
    const changeFilter = (filter: FilterValuesType) => setFilter(filter)
-
+   // удаление таски
+   const removeTask = (taskID: string) => setTasks(tasks.filter(t => t.id !== taskID))
+   // добавление таски
    const addTask = (title: string) => {
       const newTask: TaskType = {
          id: v1(),
@@ -34,6 +34,10 @@ function App() {
          isDone: false,
       }
       setTasks([...tasks, newTask])
+   }
+   // изменение статуса таски
+   const changeTaskStatus = (taskId: string, isDone: boolean) => {
+      setTasks(tasks.map(t => t.id === taskId ? {...t, isDone} : t))
    }
 
    //UI - интерфейс
@@ -52,6 +56,8 @@ function App() {
          removeTask={removeTask}
          changeFilter={changeFilter}
          addTask={addTask}
+         filter={filter}
+         changeTaskStatus={changeTaskStatus}
       />
    </div>
 
