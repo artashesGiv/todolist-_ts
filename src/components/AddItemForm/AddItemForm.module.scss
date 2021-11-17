@@ -1,0 +1,17 @@
+.inputWrapper {
+   display: flex;
+   justify-content: space-between;
+   width: 200px;
+   height: 25px;
+   button {
+      height: 25px;
+      width: 25px;
+   }
+   .error {
+      border: 3px solid crimson;
+      outline: none;
+      background-color: rgba(220, 20, 60, 0.2);
+   }
+}
+
+

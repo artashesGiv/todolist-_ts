@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
-import './App.scss'
 import Todolist from './Todolist'
 import {v1} from 'uuid'
+import {AddItemForm} from './components/AddItemForm/AddItemForm'
+import s from './App.module.scss'
 
 export type TaskType = {
    id: string
@@ -49,10 +50,7 @@ function App() {
 
    // удаление таски
    const removeTask = (taskID: string, todoListID: string) => {
-      setTasks({
-         ...tasks,
-         [todoListID]: tasks[todoListID].filter(t => t.id !== taskID),
-      })
+      setTasks({...tasks, [todoListID]: tasks[todoListID].filter(t => t.id !== taskID)})
    }
 
    // добавление таски
@@ -62,18 +60,12 @@ function App() {
          title, // title === title: title
          isDone: false,
       }
-      setTasks({
-         ...tasks,
-         [todoListID]: [...tasks[todoListID], newTask],
-      })
+      setTasks({...tasks, [todoListID]: [...tasks[todoListID], newTask]})
    }
 
    // изменение статуса таски
    const changeTaskStatus = (taskId: string, isDone: boolean, todoListID: string) => {
-      setTasks({
-         ...tasks,
-         [todoListID]: tasks[todoListID].map(t => t.id === taskId ? {...t, isDone} : t),
-      })
+      setTasks({...tasks, [todoListID]: tasks[todoListID].map(t => t.id === taskId ? {...t, isDone} : t)})
    }
 
    // изменение фильтра
@@ -91,7 +83,7 @@ function App() {
    const addTodoList = (title: string) => {
       const todoListID = v1()
       const newTodoList: TodolistType = {
-         id: v1(),
+         id: todoListID,
          title,
          filter: 'all',
       }
@@ -111,25 +103,25 @@ function App() {
       }
 
       return (
-          <div>
-             <Todolist
-                 key={tl.id}
-                 id={tl.id}
-                 title={tl.title}
-                 filter={tl.filter}
-                 tasks={tasksForRender}
-                 removeTask={removeTask}
-                 changeFilter={changeFilter}
-                 addTask={addTask}
-                 changeTaskStatus={changeTaskStatus}
-                 removeTodoList={removeTodoList}
-             />
-          </div>
+         <div>
+            <Todolist
+               key={tl.id}
+               id={tl.id}
+               title={tl.title}
+               filter={tl.filter}
+               tasks={tasksForRender}
+               removeTask={removeTask}
+               changeFilter={changeFilter}
+               addTask={addTask}
+               changeTaskStatus={changeTaskStatus}
+               removeTodoList={removeTodoList}
+            />
+         </div>
       )
    })
 
-
-   return <div className="App">
+   return <div className={s.App}>
+      <AddItemForm addItem={addTodoList} placeholder={'Enter your todolist...'}/>
       {todoListsComponent}
    </div>
 
