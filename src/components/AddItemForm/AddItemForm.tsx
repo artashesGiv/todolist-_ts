@@ -1,5 +1,7 @@
 import s from './AddItemForm.module.scss'
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react'
+import {IconButton, TextField} from '@material-ui/core'
+import {AddBox} from '@material-ui/icons'
 
 type typeProps = {
    addItem: (title: string) => void
@@ -10,7 +12,6 @@ export const AddItemForm = (props: typeProps) => {
 
    const [title, setTitle] = useState<string>('')
    const [error, setError] = useState<boolean>(false)
-   const errorMessage = error && <div style={{color: 'crimson'}}>Title is required!</div>
 
    const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
       setError(false)
@@ -27,15 +28,21 @@ export const AddItemForm = (props: typeProps) => {
 
    return (
       <div className={s.inputWrapper}>
-         <input
+         <TextField
+            variant='outlined'
+            size='small'
             value={title}
-            placeholder={props.placeholder}
             onChange={onChangeInput}
             onKeyPress={onKeyPressInput}
-            className={error ? s.error : ''}
+            label={props.placeholder}
+            error={error}
+            helperText={error && 'Title is required!'}
          />
-         <button onClick={addItem} className={s.button}>+</button>
-         {errorMessage}
+         <div>
+            <IconButton onClick={addItem}>
+               <AddBox fontSize='medium' color='primary'/>
+            </IconButton>
+         </div>
       </div>
    )
 }

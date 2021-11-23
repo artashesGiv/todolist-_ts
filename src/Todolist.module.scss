@@ -1,16 +1,14 @@
 $mainColor: rgb(118, 118, 118);
 
 .todolist {
-   box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
-   border-radius: 8px;
    padding: 20px;
-   margin-right: 20px;
-   margin-left: 20px;
-   margin-bottom: 20px;
+   width: 300px;
 
    .title {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      margin: 0 0 10px;
    }
 }
 
@@ -19,17 +17,12 @@ $mainColor: rgb(118, 118, 118);
    justify-content: space-between;
 }
 
-.list {
-   padding: 0;
-   margin: 10px 0;
+.sortButton {
+   margin-top: 10px;
+}
 
-   li {
-      margin: 10px 0;
-   }
-
-   .isDone {
-      opacity: 0.5;
-   }
+.isDone {
+   opacity: 0.5;
 }
 
 .activeFilter {
