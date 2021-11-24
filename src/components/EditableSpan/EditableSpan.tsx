@@ -4,14 +4,14 @@ import {TextField} from '@material-ui/core'
 type propsType = {
    title: string
    setNewTitle: (title: string) => void
-   isDone?: boolean
+   disable?: boolean
 }
 export const EditableSpan = (props: propsType) => {
    const [editMode, setEditMode] = useState<boolean>(false)
    const [title, setTitle] = useState<string>('')
 
    const onEditMode = () => {
-      if (!props.isDone) {
+      if (!props.disable) {
          setEditMode(true)
          setTitle(props.title)
       }
@@ -36,6 +36,7 @@ export const EditableSpan = (props: propsType) => {
             onBlur={offEditMode}
             onChange={onChangeInput}
             onKeyPress={onKeyPressInput}
+            style={{width: '150px'}}
          />
          : <span onDoubleClick={onEditMode}>{props.title}</span>
    )

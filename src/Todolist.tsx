@@ -3,7 +3,7 @@ import {FilterValuesType, TaskType} from './App'
 import s from './Todolist.module.scss'
 import {AddItemForm} from './components/AddItemForm/AddItemForm'
 import {EditableSpan} from './components/EditableSpan/EditableSpan'
-import {Checkbox, IconButton, List, ListItem} from '@material-ui/core'
+import {Checkbox, IconButton, List, ListItem, Button} from '@material-ui/core'
 import {Delete} from '@material-ui/icons'
 
 type TodolistPropsType = {
@@ -42,7 +42,7 @@ const Todolist = (props: TodolistPropsType) => {
                size="small"
                color="primary"
             />
-            <EditableSpan title={task.title} setNewTitle={changeTitle} isDone={task.isDone}/>
+            <EditableSpan title={task.title} setNewTitle={changeTitle} disable={task.isDone}/>
             <IconButton onClick={removeTask}>
                <Delete/>
             </IconButton>
@@ -58,9 +58,9 @@ const Todolist = (props: TodolistPropsType) => {
    const setActive = () => props.changeFilter('active', props.id)
    const setCompleted = () => props.changeFilter('completed', props.id)
 
-   const allBtnClass = props.filter === 'all' ? s.activeFilter : ''
-   const activeBtnClass = props.filter === 'active' ? s.activeFilter : ''
-   const completedBtnClass = props.filter === 'completed' ? s.activeFilter : ''
+   const allColor = props.filter === 'all' ? 'secondary' : 'primary'
+   const activeColor = props.filter === 'active' ? 'secondary' : 'primary'
+   const completedColor = props.filter === 'completed' ? 'secondary' : 'primary'
 
    const removeTodoList = () => props.removeTodoList(props.id)
 
@@ -85,9 +85,9 @@ const Todolist = (props: TodolistPropsType) => {
             {tasksJSXElements}
          </List>
          <div className={s.sortButton}>
-            <button onClick={setAll} className={allBtnClass}>All</button>
-            <button onClick={setActive} className={activeBtnClass}>Active</button>
-            <button onClick={setCompleted} className={completedBtnClass}>Completed</button>
+            <Button onClick={setAll} variant="outlined" color={allColor} size='small'>All</Button>
+            <Button onClick={setActive} variant="outlined" color={activeColor} size='small'>Active</Button>
+            <Button onClick={setCompleted} variant="outlined" color={completedColor} size='small'>Completed</Button>
          </div>
       </div>
    )

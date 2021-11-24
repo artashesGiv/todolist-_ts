@@ -2,7 +2,6 @@ $mainColor: rgb(118, 118, 118);
 
 .todolist {
    padding: 20px;
-   width: 300px;
 
    .title {
       display: flex;
@@ -17,16 +16,7 @@ $mainColor: rgb(118, 118, 118);
    justify-content: space-between;
 }
 
-.sortButton {
-   margin-top: 10px;
-}
-
 .isDone {
    opacity: 0.5;
 }
 
-.activeFilter {
-   background-color: $mainColor;
-   color: #fff;
-   border: none;
-}
