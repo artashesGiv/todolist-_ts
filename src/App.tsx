@@ -14,7 +14,7 @@ export type TaskType = {
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
 
-type TodolistType = {
+export type TodolistType = {
    id: string
    title: string
    filter: FilterValuesType
@@ -130,28 +130,29 @@ function App() {
       )
    })
 
-   return <div className={s.App}>
-      <AppBar position="sticky">
-         <Toolbar style={{justifyContent: 'space-between'}}>
-            <IconButton edge="start" color="inherit" aria-label="menu">
-               <Menu/>
-            </IconButton>
-            <Typography variant="h6">
-               TodoList
-            </Typography>
-            <Button color="inherit" variant={'outlined'}>Login</Button>
-         </Toolbar>
-      </AppBar>
-      <Container fixed>
-         <Grid container style={{padding: '30px 0'}}>
-            <AddItemForm addItem={addTodoList} placeholder={'Enter your todolist...'}/>
-         </Grid>
-         <Grid container spacing={4}>
-            {todoListsComponent}
-         </Grid>
-      </Container>
-   </div>
-
+   return (
+      <>
+         <AppBar position="sticky">
+            <Toolbar style={{justifyContent: 'space-between'}}>
+               <IconButton edge="start" color="inherit" aria-label="menu">
+                  <Menu/>
+               </IconButton>
+               <Typography variant="h6">
+                  TodoList
+               </Typography>
+               <Button color="inherit" variant={'outlined'}>Login</Button>
+            </Toolbar>
+         </AppBar>
+         <Container fixed>
+            <Grid container style={{padding: '30px 0'}}>
+               <AddItemForm addItem={addTodoList} placeholder={'Enter your todolist...'}/>
+            </Grid>
+            <Grid container spacing={4}>
+               {todoListsComponent}
+            </Grid>
+         </Container>
+      </>
+   )
 }
 
 export default App
