@@ -8,8 +8,7 @@ type typeProps = {
    placeholder?: string
 }
 
-export const AddItemForm = (props: typeProps) => {
-
+export const AddItemForm = React.memo((props: typeProps) => {
    const [title, setTitle] = useState<string>('')
    const [error, setError] = useState<boolean>(false)
 
@@ -25,12 +24,11 @@ export const AddItemForm = (props: typeProps) => {
       trimTitle ? props.addItem(trimTitle) : setError(true)
       setTitle('')
    }
-
    return (
       <div className={s.inputWrapper}>
          <TextField
-            variant='outlined'
-            size='small'
+            variant="outlined"
+            size="small"
             value={title}
             onChange={onChangeInput}
             onKeyPress={onKeyPressInput}
@@ -40,9 +38,9 @@ export const AddItemForm = (props: typeProps) => {
          />
          <div>
             <IconButton onClick={addItem}>
-               <AddBox fontSize='medium' color='primary'/>
+               <AddBox fontSize="medium" color="primary"/>
             </IconButton>
          </div>
       </div>
    )
-}
+})

@@ -6,7 +6,7 @@ type propsType = {
    setNewTitle: (title: string) => void
    disable?: boolean
 }
-export const EditableSpan = (props: propsType) => {
+export const EditableSpan = React.memo((props: propsType) => {
    const [editMode, setEditMode] = useState<boolean>(false)
    const [title, setTitle] = useState<string>('')
 
@@ -40,4 +40,4 @@ export const EditableSpan = (props: propsType) => {
          />
          : <span onDoubleClick={onEditMode}>{props.title}</span>
    )
-}
+})
